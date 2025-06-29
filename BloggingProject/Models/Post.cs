@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BloggingProject.Models
 {
@@ -15,5 +16,13 @@ namespace BloggingProject.Models
         public required string imagePath { get; set; }
         [DataType(DataType.Date)]
         public required DateTime PublishedDate { get; set; } = DateTime.Now;
+
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+
+
+        public Category Category { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

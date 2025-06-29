@@ -12,5 +12,7 @@ namespace BloggingProject.Models
         [MaxLength(650, ErrorMessage = " Do not exceed 200 letters")]
 
         public string? Description { get; set; }
+
+        public ICollection<Post> Posts { get; set; }
     }
 }
