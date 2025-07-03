@@ -70,6 +70,13 @@ namespace BloggingProject.Controllers
 
                 return RedirectToAction("Index");
             }
+            postViewModel.Categories = _context.Categories.Select(c =>
+            new SelectListItem
+            {
+                Value = c.CategoryId.ToString(),
+                Text = c.Name
+            }
+            ).ToList();
 
             return View(postViewModel );
         }
