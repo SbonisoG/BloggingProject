@@ -16,6 +16,7 @@
         height: 500px;
         object-fit: cover;
         margin-bottom: 20px;
+        border-radius: 10px;
     }
 </style>
 
@@ -30,4 +31,24 @@
     <p><span class="badge bg-secondary">Category</span> @Model.Category.Name</p>
     <img src="@Model.imagePath" alt="@Model.Title" class="feature-image"/>
     <div>@Html.Raw(Model.Content)</div>
+    <hr />
+
+    @if (Model.Comments.Any())
+    {
+        <div>
+            @foreach(var comment in Model.Comments)
+            {
+                <div class="card mb-3 shadow-sm">
+                    <h5 class="card-title">@comment.UserName</h5>
+                    <p class="card-text text-muted">@comment.CommentContent</p>
+                    <p class="card-text">@comment.CommentContent</p>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">No Comments yet. Be the first to comment</p>
+    }
+
 </div>
