@@ -28,6 +28,7 @@ namespace BloggingProject.Models
         [ValidateNever]
         public Category Category { get; set; }
 
-        //public ICollection<Comment> Comments { get; set; }
+        [ValidateNever]
+        public ICollection<Comment> Comments { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model Post
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<style>
+    .content-wrapper {
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        font-family: sans-serif;
+    }
+
+    .feature-image{
+        width:100%;
+        height: 500px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="text-end">
+    <a class="btn btn-secondary my-3">Edit Post</a>
+    <a class="btn btn-danger mx-3 my-3">Delete Post</a>
+</div>
+
+<div class="content-wrapper">
+    <h1>@Model.Title</h1>
+    <P><span class="badge bg-primary">By </span>@Model.Author | <span class="badge bg-primary">Published on</span> @Model.PublishedDate.ToString("MMM dd,yyyy")</P>
+    <p><span class="badge bg-secondary">Category</span> @Model.Category.Name</p>
+    <img src="@Model.imagePath" alt="@Model.Title" class="feature-image"/>
+    <div>@Html.Raw(Model.Content)</div>
+</div>

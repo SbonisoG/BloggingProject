@@ -33,6 +33,25 @@ namespace BloggingProject.Controllers
             ViewBag.Categories = _context.Categories.ToList();
             return View(post);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var post = await _context.Posts.Include(p =>
+            p.Category).Include(p => 
+            p.Comments).FirstOrDefaultAsync(p => 
+            p.PostId == id);
+
+            if (post == null)
+                return NotFound();
+
+            return View(post);
+        } 
+
+
         [HttpGet]
         public IActionResult Create()
         {
